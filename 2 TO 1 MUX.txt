@@ -1,0 +1,25 @@
+//DESIGN CODE
+module mux(
+    input a,b,s,
+    output y
+    );
+and(w1,a,!s);
+and(w2,b,s);
+or(y,w1,w2);
+endmodule
+
+
+//TEST BENCH
+module mux_tb;
+reg a;
+reg b;
+reg s;
+wire y;
+mux uut(.a(a),.b(b),.s(s),.y(y));
+initial begin
+s=0;a=1;b=0;#100;
+s=1;a=1;b=1;#100;
+s=1;a=0;b=1;#100;
+s=1;a=1;b=1;#100;
+end
+endmodule
